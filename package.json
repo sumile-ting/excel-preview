@@ -1,0 +1,30 @@
+{
+  "name": "excelpreview",
+  "version": "1.0.0",
+  "description": "Preview Excel online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumile-ting/excelPreview.git"
+  },
+  "keywords": [
+    "excel",
+    "sheetjs"
+  ],
+  "author": "zhuwei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumile-ting/excelPreview/issues"
+  },
+  "homepage": "https://github.com/sumile-ting/excelPreview#readme",
+  "dependencies": {
+    "bootstrap": "^3.4.0",
+    "bootstrap-table": "^1.13.1",
+    "jquery": "^3.3.1",
+    "xlsx": "^0.14.1",
+    "xlsx-style": "^0.8.13"
+  }
+}
