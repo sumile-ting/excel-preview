@@ -9,13 +9,14 @@ Install excel-preview and dependencies
 npm install excel-preview --save
 Include jquery and table2excel in your page
 
+```html
 <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="node_modules/bootstrap-table/dist/bootstrap-table.min.js" type="text/javascript"></script>
 <script src="node_modules/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
 <script src="node_modules/xlsx-style/dist/xlsx.full.min.js" type="text/javascript"></script>
 <script src="js/dist/excel-preview.min.js"></script>
-
+```
 
 Using the plugin
 ================
