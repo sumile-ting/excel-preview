@@ -1,0 +1,36 @@
+		.excel-box {
+			min-height: 700px;
+		}
+		.box.box-default {
+		    border-top-color: #d2d6de;
+		}
+		.box {
+		    position: relative;
+		    border-radius: 3px;
+		    background: #ffffff;
+		    border-top: 3px solid #d2d6de;
+		    margin-bottom: 20px;
+		    width: 100%;
+		    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+		    margin-top: 20px;
+		}
+		.content {
+			margin-top: 20px;
+		}
+		.excel-box {
+			padding: 20px;
+		}
+		.excel-box .nav-tabs > li.active {
+			border-top: 3px solid #d12610;
+			margin-top: 0;
+			position: relative;
+		}
+		.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+			margin-right: 0px;
+		}
+		.nav-tabs>li>a {
+			border-radius: 0;
+		}
+		.tab-pane{
+			padding: 20px;
+		}
