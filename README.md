@@ -1,8 +1,10 @@
 jQuery excelPreview Plugin (https://github.com/sumile-ting/excel-preview)
+==========================
 
 选择一个excel文件，将所选得excel表格展示在页面上
 
 Install excel-preview and dependencies
+=====================================
 
 npm install excel-preview --save
 Include jquery and table2excel in your page
@@ -16,22 +18,33 @@ Include jquery and table2excel in your page
 
 
 Using the plugin
-$("#yourExcelTable").excelPreview({});
+================
+```html
+<input type="file" name="file">
+<div id="yourExcelTable"></div>
+```
 
-index.html
+```javascript
+$("#yourExcelTable").excelPreview({});
+```
+
+[index.html](https://github.com/sumile-ting/excel-preview/index.html)
+
 Contains a simple HTML file to demonstrate the plugin.
 
-dist/
+[dist/]
 This is where the generated files are stored once gulp runs.
 
-gulpfile.js
+[gulpfile.js]
+===========
 Contains all automated tasks using fulp.
 
 
-package.json
+[package.json]
 Specify all dependencies loaded via Node.JS.
 
 Check NPM for more details.
 
 License
+=======
 MIT License
