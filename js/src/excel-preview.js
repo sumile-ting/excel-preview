@@ -25,6 +25,7 @@
             var e = this;
             $(e.element).prev('input[type=file]').on('change', function(file) {
                 e.excelPreview(file);
+                $(this).val('');
             })  
         },
 
