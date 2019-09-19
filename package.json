@@ -1,6 +1,6 @@
 {
   "name": "excel-preview",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Preview Excel online",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/sumile-ting/excelPreview#readme",
   "dependencies": {
     "bootstrap": "^3.4.1",
+    "bootstrap-fileinput": "^5.0.6",
     "bootstrap-table": "^1.13.1",
     "jquery": "^3.4.0",
     "xlsx": "^0.14.1",

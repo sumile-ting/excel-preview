@@ -34,3 +34,7 @@
 		.tab-pane{
 			padding: 20px;
 		}
+		.file-error-message{
+			position: absolute;
+    		top: 61px;
+		}

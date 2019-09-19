@@ -3,7 +3,7 @@
     var pluginName = "excelPreview",
 
     defaults = {
-        // name: "excelPreview"
+        height: 500
     };
 
     // The actual plugin constructor
@@ -17,27 +17,38 @@
             this.settings = $.extend( {}, defaults, options );
             this._defaults = defaults;
             this._name = pluginName;
+            defaults = this.settings;
             this.init();
     }
 
     Plugin.prototype = {
         init: function () {
             var e = this;
-            $(e.element).prev('input[type=file]').on('change', function(file) {
+            $(e.element).prev('input[type=file]').fileinput({
+                language: 'zh',
+                showUpload: false,
+                dropZoneEnabled: false,
+                hideThumbnailContent: true,
+                showPreview: false,
+                allowedFileExtensions: ['xlsx'],
+                elErrorContainer: '#kartik-file-errors',
+                // showRemove: false
+            }).on('change', function(file) {
                 e.excelPreview(file);
-                $(this).val('');
             })  
         },
 
         excelPreview: function (file) {
             var e = this;
             loadFile(file, e.element);
+            $(e.element).prev('input[type=file]').fileinput('refresh');
             return true;
         }
     };
 
     function loadFile(event, ele) {
         let file = event.target.files;
+        if(file.length == 0)return;
         var fileReader = new FileReader();
         fileReader.onload = (ev) => {
             try {
@@ -186,7 +197,7 @@
     function loadTabContent(sheetName, workbook, $table) {
         var worksheet = workbook.Sheets[sheetName];
         var tableConf = {
-            height: 600,
+            height: defaults.height,
             showHeader: false
         };
         var tableData = getTableData(worksheet);
