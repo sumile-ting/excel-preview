@@ -16,8 +16,12 @@ Include jquery and table2excel in your page
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="node_modules/bootstrap-table/dist/bootstrap-table.min.js" type="text/javascript"></script>
 <script src="node_modules/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
+<script src="node_modules/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
+<script src="node_modules/bootstrap-fileinput/js/locales/zh.js" type="text/javascript"></script>
 <script src="node_modules/xlsx-style/dist/xlsx.full.min.js" type="text/javascript"></script>
 <script src="js/dist/excel-preview.min.js"></script>
+<link rel="stylesheet" href="node_modules/bootstrap-table/dist/bootstrap-table.min.css">
+<link href="node_modules/bootstrap-fileinput/css/fileinput.min.css"  rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/excel-preview.css">
 ```
 
