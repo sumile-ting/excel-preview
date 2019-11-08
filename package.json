@@ -1,6 +1,6 @@
 {
   "name": "excel-preview",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Preview Excel online",
   "main": "index.js",
   "scripts": {

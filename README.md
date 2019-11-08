@@ -9,7 +9,7 @@ Install excel-preview and dependencies
 npm install excel-preview --save
 ```
 
-Include jquery and table2excel in your page
+Include jquery and excel-preview in your page
 ------------------------------------------
 ```html
 <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
@@ -30,11 +30,32 @@ Using the plugin
 ```html
 <input type="file" name="file">
 <div id="yourExcelTable"></div>
+<div id="kartik-file-errors"></div> /** error message*/
 ```
 
 ```javascript
 $("#yourExcelTable").excelPreview({});
 ```
+
+Using the plugin in webpack
+===========================
+you should include these codes in your entry.
+```
+    import '../node_modules/bootstrap/dist/js/bootstrap.min';
+    import 'bootstrap-table';
+    import 'bootstrap-fileinput';
+    import '../node_modules/excel-preview/js/dist/excel-preview.min';
+```
+include below codes in webpack.config
+```
+
+        new webpack.ProvidePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery',
+            'window.jQuery': 'jquery'
+        })
+```
+
 
 [index.html](https://github.com/sumile-ting/excel-preview/blob/master/index.html)
 

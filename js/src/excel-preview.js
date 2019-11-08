@@ -1,27 +1,34 @@
-//excelPreview.js
-;(function ( $, window, document, undefined ) {
+!function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else {
+        factory(root.jQuery);
+    }
+}(this, function ($) {
+    'use strict';
+
+    // Default options
     var pluginName = "excelPreview",
 
-    defaults = {
-        height: 500
+        defaults = {
+            height: 500
+        };
+
+    // Constructor, initialise everything you need here
+    var Plugin = function (element, options) {
+        this.element = element;
+        this.settings = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name = pluginName;
+        defaults = this.settings;
+        this.init();
     };
 
-    // The actual plugin constructor
-    function Plugin ( element, options ) {
-            this.element = element;
-            // jQuery has an extend method which merges the contents of two or
-            // more objects, storing the result in the first object. The first object
-            // is generally empty as we don't want to alter the default options for
-            // future instances of the plugin
-            //
-            this.settings = $.extend( {}, defaults, options );
-            this._defaults = defaults;
-            this._name = pluginName;
-            defaults = this.settings;
-            this.init();
-    }
-
+    // Plugin methods and shared properties
     Plugin.prototype = {
+        // Reset constructor - http://goo.gl/EcWdiy
+        constructor: Plugin,
+
         init: function () {
             var e = this;
             $(e.element).prev('input[type=file]').fileinput({
@@ -33,18 +40,18 @@
                 allowedFileExtensions: ['xlsx'],
                 elErrorContainer: '#kartik-file-errors',
                 // showRemove: false
-            }).on('change', function(file) {
+            }).on('change', function (file) {
                 e.excelPreview(file);
-            })  
+            })
         },
-
         excelPreview: function (file) {
             var e = this;
             loadFile(file, e.element);
             $(e.element).prev('input[type=file]').fileinput('refresh');
             return true;
         }
-    };
+    }
+
 
     function loadFile(event, ele) {
         let file = event.target.files;
@@ -131,9 +138,9 @@
         let rowspan = Math.abs(merge.e.r - merge.s.r + 1);
         let colspan = Math.abs(merge.e.c - merge.s.c + 1);
         $table.bootstrapTable('mergeCells', {
-            index: merge.s.r, 
+            index: merge.s.r,
             field: 'column_' + merge.s.c,
-            rowspan: rowspan, 
+            rowspan: rowspan,
             colspan: colspan
         });
     }
@@ -148,9 +155,9 @@
 
     /**
      * key = AA2, start: A1, end = AA8, return {r: 1, c: 26}
-     * @param {*} key 
-     * @param {*} start 
-     * @param {*} end 
+     * @param {*} key
+     * @param {*} start
+     * @param {*} end
      */
     function getRowColIndex(key, start) {
         start = CUSTOM_UTIL.splitRC(start);
@@ -217,17 +224,27 @@
         loadTabContent(sheetName, workbook, $table.find('table'));
     }
 
+    // Create the jQuery plugin
+    $.fn[ pluginName ] = function (options) {
+        // Do a deep copy of the options - http://goo.gl/gOSSrg
+        options = $.extend(true, {}, defaults, options);
 
-    $.fn[ pluginName ] = function ( options ) {
-        var e = this;
-            e.each(function() {
-                if ( !$.data( e, "plugin_" + pluginName ) ) {
-                    $.data( e, "plugin_" + pluginName, new Plugin( this, options ) );
+        return this.each(function () {
+            var $this = $(this);
+            // Create a new instance for each element in the matched jQuery set
+            // Also save the instance so it can be accessed later to use methods/properties etc
+            // e.g.
+            //    var instance = $('.element').data('plugin');
+            //    instance.someMethod();
+
+            if ( !$.data( $this, "plugin_" + pluginName ) ) {
+                    $.data( $this, "plugin_" + pluginName, new Plugin( this, options ) );
                 }
-            });
-
-        // chain jQuery functions
-        return e;
+        });
     };
 
-})( jQuery, window, document );
+    // Expose defaults and Constructor (allowing overriding of prototype methods for example)
+    $.fn[ pluginName ].defaults = defaults;
+    $.fn[ pluginName ].Plugin = Plugin;
+});
+
