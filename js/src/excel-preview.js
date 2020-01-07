@@ -1,10 +1,10 @@
-!function (root, factory) {
+;(function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
     } else {
-        factory(root.jQuery);
+        factory(jQuery);
     }
-}(this, function ($) {
+}(function ($) {
     'use strict';
 
     // Default options
@@ -246,5 +246,5 @@
     // Expose defaults and Constructor (allowing overriding of prototype methods for example)
     $.fn[ pluginName ].defaults = defaults;
     $.fn[ pluginName ].Plugin = Plugin;
-});
+}));
 
