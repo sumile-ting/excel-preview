@@ -107,7 +107,13 @@
     }
 
     function getTableData(sheet) {
-        const headers = []
+        const headers = [];
+        if(Object.keys(sheet).length == 0 || !sheet['!ref']) {
+            return {
+                columns: [],
+                data: []
+            }
+        }
         const range = XLSX.utils.decode_range(sheet['!ref'])
         let C
         const R = range.s.r /* start in the first row */
@@ -203,15 +209,20 @@
 
     function loadTabContent(sheetName, workbook, $table) {
         var worksheet = workbook.Sheets[sheetName];
+
         var tableConf = {
             height: defaults.height,
-            showHeader: false
+            showHeader: false,
+            classes: 'table table-bordered'
         };
         var tableData = getTableData(worksheet);
         $.extend(tableConf, tableData)
         $table.bootstrapTable(tableConf);
-        setStyles(worksheet, $table);
-        mergeCells(worksheet, $table);
+        if(Object.keys(worksheet).length > 0 && worksheet['!ref']) {
+            setStyles(worksheet, $table);
+            mergeCells(worksheet, $table);
+        }
+
     }
 
 
